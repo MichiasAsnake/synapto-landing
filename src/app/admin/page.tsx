@@ -17,6 +17,11 @@ export default function AdminPage() {
     const [mapLink, setMapLink] = useState("");
     const [isAutofilling, setIsAutofilling] = useState(false);
 
+    // Password Protection State
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [passwordInput, setPasswordInput] = useState("");
+    const ADMIN_PASSWORD = "Cheerios@151714161930";
+
     // Safely get base URL on client side
     useEffect(() => {
         setUploadUrl(window.location.origin);
@@ -44,6 +49,16 @@ export default function AdminPage() {
             if (nameMatch && !name) {
                 setName(decodeURIComponent(nameMatch[1].replace(/\+/g, ' ')));
             }
+        }
+    };
+
+    const handleLogin = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (passwordInput === ADMIN_PASSWORD) {
+            setIsAuthenticated(true);
+            setError(null);
+        } else {
+            setError("Incorrect password");
         }
     };
 
@@ -102,6 +117,41 @@ export default function AdminPage() {
             img.src = "data:image/svg+xml;base64," + btoa(svgData);
         }
     };
+
+    if (!isAuthenticated) {
+        return (
+            <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center p-4">
+                <form onSubmit={handleLogin} className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 space-y-6 w-full max-w-sm text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 mb-2">
+                        <Store size={32} />
+                    </div>
+                    <div>
+                        <h1 className="text-2xl font-bold">Admin Login</h1>
+                        <p className="text-gray-500 text-sm mt-1">Enter password to access merchant tools</p>
+                    </div>
+                    {error && (
+                        <div className="text-red-500 text-sm font-medium bg-red-50 p-3 rounded-xl border border-red-100">
+                            {error}
+                        </div>
+                    )}
+                    <input
+                        type="password"
+                        value={passwordInput}
+                        onChange={(e) => setPasswordInput(e.target.value)}
+                        placeholder="Admin Password"
+                        required
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-black focus:ring-2 focus:ring-indigo-500 outline-none text-center"
+                    />
+                    <button
+                        type="submit"
+                        className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-colors"
+                    >
+                        Access Dashboard
+                    </button>
+                </form>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-black py-12 px-4 sm:px-6">
