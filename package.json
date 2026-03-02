@@ -23,6 +23,8 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
+    "@dotenvx/dotenvx": "^1.52.0",
+    "@dotenvx/dotenvx-ext-vault": "^0.3.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
