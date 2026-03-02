@@ -12,7 +12,7 @@ export default function DemoPage() {
             <header className="border-b border-zinc-900 bg-zinc-950 p-4">
                 <div className="mx-auto w-full max-w-[1200px] flex items-center justify-between">
                     <Button asChild variant="ghost" className="text-zinc-400 hover:text-zinc-50 hover:bg-zinc-900 pl-2">
-                        <a href="/">
+                        <a href="/synapto">
                             <ArrowLeft className="mr-2 h-4 w-4" />
                             Back to Home
                         </a>
