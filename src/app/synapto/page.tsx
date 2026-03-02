@@ -20,7 +20,7 @@ const landingPage = {
     ],
     emphasis: "Built for print and embroidery shops managing dozens of active jobs.",
     primaryCta: "See how it prioritizes your work",
-    secondaryCta: "Browse a sample dashboard",
+    secondaryCta: "Request a live demo",
     screenshotLabel: "Shop overview console",
   },
   problem: {
@@ -155,9 +155,14 @@ const lightSectionBase =
 
 function PrimaryButton({ children, href }: { children: ReactNode; href?: string }) {
   if (href) {
+    const isExternal = href.startsWith("http") || href.startsWith("mailto");
     return (
       <Button asChild variant="default" size="default" className="gap-2 rounded-full">
-        <a href={href} target="_blank" rel="noopener noreferrer">
+        <a
+          href={href}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+        >
           {children}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
@@ -174,6 +179,7 @@ function PrimaryButton({ children, href }: { children: ReactNode; href?: string 
 
 function SecondaryButton({ children, href }: { children: ReactNode; href?: string }) {
   if (href) {
+    const isExternal = href.startsWith("http") || href.startsWith("mailto");
     return (
       <Button
         asChild
@@ -181,7 +187,13 @@ function SecondaryButton({ children, href }: { children: ReactNode; href?: strin
         size="default"
         className="gap-2 rounded-full border border-zinc-700/70"
       >
-        <a href={href}>{children}</a>
+        <a
+          href={href}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+        >
+          {children}
+        </a>
       </Button>
     );
   }
@@ -252,8 +264,8 @@ export default function LandingPage() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
-                <PrimaryButton href="https://calendly.com/mickyasnake/30min">{landingPage.hero.primaryCta}</PrimaryButton>
-                <SecondaryButton href="/demo">
+                <PrimaryButton href="/demo">{landingPage.hero.primaryCta}</PrimaryButton>
+                <SecondaryButton href="https://calendly.com/mickyasnake/30min">
                   <MessageCircle className="h-4 w-4" aria-hidden="true" />
                   {landingPage.hero.secondaryCta}
                 </SecondaryButton>
