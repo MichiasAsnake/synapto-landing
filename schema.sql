@@ -16,6 +16,7 @@ CREATE TABLE shops (
   latitude DOUBLE PRECISION NOT NULL,
   longitude DOUBLE PRECISION NOT NULL,
   upload_token TEXT UNIQUE NOT NULL,
+  google_place_id TEXT UNIQUE,
   is_active BOOLEAN DEFAULT true,
   created_at TIMESTAMPTZ DEFAULT now()
 );
