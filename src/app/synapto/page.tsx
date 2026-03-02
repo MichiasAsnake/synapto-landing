@@ -12,7 +12,7 @@ const landingPage = {
     productName: "Synapto",
   },
   hero: {
-    headline: "Know which orders need attention, without changing the system you already use",
+    headline: "A second brain for your shop’s existing order system",
     subheadline:
       "Synapto connects to your existing shop system and scans your live orders to surface the few jobs that are actually at risk—late production, missing approvals, rush orders, or high-value clients waiting.",
     body: [
