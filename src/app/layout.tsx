@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ordermind — Bring control back to your orders",
+  title: "Synapto — Bring control back to your orders",
   description:
-    "Ordermind turns a noisy inbox of jobs into a ranked list of work your team can act on, with full context for every order.",
+    "Synapto turns a noisy inbox of jobs into a ranked list of work your team can act on, with full context for every order.",
 };
 
 export default function RootLayout({
