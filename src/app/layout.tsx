@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,9 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Synapto — Bring control back to your orders",
-  description:
-    "Synapto turns a noisy inbox of jobs into a ranked list of work your team can act on, with full context for every order.",
+  title: "StreetShelf MVP",
+  description: "Discover nearby souvenirs instantly.",
 };
 
 export default function RootLayout({
@@ -25,14 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full scroll-smooth bg-zinc-950">
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-full bg-zinc-950 text-zinc-50 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Analytics />
       </body>
     </html>
   );
 }
-
